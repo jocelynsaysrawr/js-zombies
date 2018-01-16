@@ -34,12 +34,18 @@
  * @property {number} damage
  */
 
+ class Weapon extends Item{
+
+   constructor(name, damage){
+    super(name);
+    this.damage = damage;
+   }
+ }
 
 /**
  * Weapon Extends Item Class
  * -----------------------------
  */
-
 
 
 /**
