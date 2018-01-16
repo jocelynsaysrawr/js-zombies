@@ -8,6 +8,15 @@
  * @property {string} name
  */
 
+ class Item {
+  constructor(name){
+    if(typeof name === 'string') {
+      this.name = name;
+    }else{
+      throw new typeError('Item.name must be a string!');
+    }
+  }
+ }
 
 /**
  * Class => Weapon(name, damage)
