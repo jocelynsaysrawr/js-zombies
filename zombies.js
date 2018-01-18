@@ -138,7 +138,7 @@
  */
 
  checkPack() {
-    return getPack();
+  console.log(this.getPack());
  }
 
 /**
