@@ -164,8 +164,10 @@
     console.log('Player: ' + this.name)
     console.log('Item: ' + item)
     this._pack.push(item);
+    return true;
    }else{
     console.log('The pack is full. Item could not be stored.')
+    return false;
    }
  }
 
@@ -195,6 +197,16 @@
  * @return {boolean} true/false     Whether player was able to remove item from pack.
  */
 
+ discardItem(item) {
+  if (this._pack.indexOf(item) === -1) {
+    console.log('Nothing was discarded. Item could not be found.')
+    return false;
+  }else{
+    this._pack.splice(this._pack.indexOf(item), 1);
+    console.log(this.name + ' discarded ' + item + ' from pack.')
+    return true;
+  }
+ }
 
 /**
  * Player Class Method => equip(itemToEquip)
