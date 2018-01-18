@@ -228,6 +228,24 @@
  * @param {Weapon} itemToEquip  The weapon item to equip.
  */
 
+ equip(itemToEquip) {
+  if (this.equipped === false && itemToEquip instanceof Weapon){
+    if (this._pack.indexOf(itemToEquip) !== -1){
+      this.equipped = itemToEquip;
+      this._pack.splice(this._pack.indexOf(itemToEquip), 1);
+    }else{
+      return false;
+    }
+  }else if (this.equipped !== false && itemToEquip instanceof Weapon){
+    if (this._pack.indexOf(itemToEquip) !== -1){
+      var holdWeapon = this.equipped;
+      this.equipped = itemToEquip;
+      this._pack.splice(this._pack.indexOf(itemToEquip), 1, holdWeapon);
+    }else{
+      return false;
+    }
+  }
+ }
 
 /**
  * Player Class Method => eat(itemToEat)
