@@ -238,9 +238,9 @@
     }
   }else if (this.equipped !== false && itemToEquip instanceof Weapon){
     if (this._pack.indexOf(itemToEquip) !== -1){
-      var holdWeapon = this.equipped;
+      var oldWeapon = this.equipped;
       this.equipped = itemToEquip;
-      this._pack.splice(this._pack.indexOf(itemToEquip), 1, holdWeapon);
+      this._pack.splice(this._pack.indexOf(itemToEquip), 1, oldWeapon);
     }else{
       return false;
     }
@@ -266,6 +266,19 @@
  * @param {Food} itemToEat  The food item to eat.
  */
 
+ eat(itemToEat) {
+   if (this.health < this.getMaxHealth() && itemToEat instanceof Food){
+     if(this._pack.indexOf(itemToEat) !== -1){
+       if(this.health + itemToEat.energy > this.getMaxHealth()){
+         this.health = this.getMaxHealth();
+         this._pack.splice(this._pack.indexOf(itemToEat), 1);
+       }else{
+         this.health = this.health + itemToEat.energy;
+         this._pack.splice(this._pack.indexOf(itemToEat), 1);
+       }
+     }
+   }
+ }
 
 /**
  * Player Class Method => useItem(item)
